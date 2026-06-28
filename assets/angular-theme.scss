@@ -1,0 +1,65 @@
+// ============================================================================
+// Accenture theme for Angular Material (mat.theme API, v19+)
+// Two signature moves: seed primary from Accenture Purple #A100FF, and override
+// the shape tokens to be SHARP (Material defaults to rounded pills).
+//
+// Best fidelity: generate a seeded palette first ->
+//   ng generate @angular/material:theme-color   (seed #A100FF, tertiary #FF50A0)
+// which emits _theme-colors.scss; then swap the `acn.$*-palette` references below.
+// This file uses prebuilt palettes as a no-codegen fallback.
+// ============================================================================
+
+@use '@angular/material' as mat;
+// @use './theme-colors' as acn;   // <- uncomment after running theme-color codegen
+
+html {
+  color-scheme: light dark;
+
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: mat.$violet-palette,     // closest prebuilt to #A100FF; replace with acn.$primary-palette
+      tertiary: mat.$magenta-palette,   // magenta accent; replace with acn.$tertiary-palette
+    ),
+    typography: Inter,                  // use Graphik if licensed & registered
+    density: 0,
+  ));
+
+  // --- The Accenture corrections -------------------------------------------
+  // Sharp corners everywhere (kills Material's pill buttons & rounded cards).
+  @include mat.theme-overrides((
+    corner-full: 0px,
+    corner-extra-large: 8px,
+    corner-large: 4px,
+    corner-medium: 4px,
+    corner-small: 2px,
+  ));
+}
+
+// Rectangular, bold primary button + outlined cards.
+@include mat.button-overrides((
+  filled-container-shape: 0px,
+  outlined-container-shape: 0px,
+  protected-container-shape: 0px,
+));
+@include mat.card-overrides((
+  elevated-container-shape: 0px,
+  outlined-container-shape: 0px,
+));
+
+// Brand helpers you can use on your own elements with the generated system tokens.
+:root {
+  --acn-gradient-core: linear-gradient(135deg, #A100FF 0%, #FF50A0 100%);
+  --acn-gradient-spectrum: linear-gradient(120deg, #2E5BFF 0%, #A100FF 48%, #FF50A0 100%);
+}
+
+.acn-eyebrow {
+  font: 600 12px/1.2 Inter, sans-serif;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mat-sys-primary);
+}
+.acn-display { font: 700 44px/1.1 Inter, sans-serif; letter-spacing: -.015em; }
+
+// Chevron `>` slide on the primary CTA (place <mat-icon iconPositionEnd>chevron_right</mat-icon> in the button).
+.mat-mdc-unelevated-button mat-icon { transition: transform .15s cubic-bezier(.16, 1, .3, 1); }
+.mat-mdc-unelevated-button:hover mat-icon { transform: translateX(4px); }

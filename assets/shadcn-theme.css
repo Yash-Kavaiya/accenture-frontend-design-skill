@@ -1,0 +1,73 @@
+/* ============================================================================
+   Accenture theme for shadcn/ui
+   Paste into your globals.css (replacing the default shadcn :root / .dark blocks).
+   Values are HSL channels (shadcn convention: `H S% L%`, used as hsl(var(--token))).
+   The two signature moves: --primary = Accenture Purple, and --radius = 0 (sharp).
+   ============================================================================ */
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;            /* #161616 */
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 9%;
+
+  --primary: 277 100% 50%;          /* #A100FF — Accenture Purple */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 96%;            /* #F5F5F5 light grey surface */
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 35%;     /* #595959 */
+  --accent: 330 100% 66%;           /* #FF50A0 magenta accent */
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 359 78% 59%;       /* #E5484D */
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 89%;               /* #E2E2E2 */
+  --input: 0 0% 80%;
+  --ring: 277 100% 50%;             /* purple focus ring */
+
+  /* Chart palette (data viz) */
+  --chart-1: 277 100% 50%;          /* purple  #A100FF */
+  --chart-2: 226 100% 59%;          /* blue    #2E5BFF */
+  --chart-3: 330 100% 66%;          /* magenta #FF50A0 */
+  --chart-4: 176 100% 38%;          /* teal    #00C2B8 */
+  --chart-5: 39 100% 59%;           /* amber   #FFB02E */
+
+  --radius: 0rem;                   /* SHARP — the Accenture signature (try 0.125rem for a hint) */
+}
+
+.dark {
+  --background: 0 0% 4%;            /* #0A0A0A black-first */
+  --foreground: 0 0% 95%;
+
+  --card: 0 0% 9%;                  /* #161616 */
+  --card-foreground: 0 0% 95%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 95%;
+
+  --primary: 277 100% 50%;          /* #A100FF pops on black */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 330 100% 66%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 359 78% 59%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 18%;
+  --input: 0 0% 22%;
+  --ring: 271 100% 65%;             /* #B14DFF — lighter purple ring on dark */
+}
+
+/* Recommended companion: load Inter and set the display family for headings.
+   In tailwind.config: theme.extend.fontFamily.sans = ['Graphik','Inter',...].
+   Then style headings: `font-bold tracking-tight` for the Accenture display feel. */
